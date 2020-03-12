@@ -7,7 +7,7 @@ databases
     catalog ID/song/spectographs
   LOW level up system
     username/verified submissions/rank
+    gotta figure out why phpadmin isnt working on my pc grr
 HIGH submission form
   ** hide catalog id for digital releases (RESPONSIVE DESIGN)
-  HANDLING DATA O
-  reference field
+add error messages
