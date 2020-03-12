@@ -9,30 +9,52 @@
 
 <!--submission fields-->
 <form action="/submission.php">
-  <label for="artist-name">Artist:</label>
-  <input type="text" id="artist-name" name="artist-name"><br><br>
+  <label for="artist">Artist:</label>
+  <input type="text" id="artist" name="artist"><br><br>
 
-  <label for="release-title">Title:</label>
-  <input type="text" id="release-title" name="release-title"><br><br>
+  <label for="releasetitle">Title:</label>
+  <input type="text" id="releasetitle" name="releasetitle"><br><br>
 
-  <label for="release-date">Release date:</label>
-  <input type="date" id="release-date" name="release-date"><br><br>
+  <label for="releasedate">Release date:</label>
+  <input type="date" id="releasedate" name="releasedate"><br><br>
 
   <label for="catalog-no">Catalog number:</label>
-  <input type="text" id="catalog-no" name="catalog-no"><br><br>
+  <input type="text" id="catalogno" name="catalogno"><br><br>
 
   <label for="format">Format:</label>
-  <!--format dropdown-->
+  <!--file format dropdown-->
   <select id="format">
     <option value="CD">CD</option>
     <option value="Digital">Digital</option>
     <option value="Vinyl">Vinyl</option>
   </select><br><br>
 
-  <label for="song-upload">Your files:</label>
-  <input type="file" id="song-upload" accept="audio/*"><br><br>
+  <label for="upload">Your files:</label>
+  <input type="file" id="upload" accept="audio/*"><br><br>
+
+  <label for="proof">Proof of audio origin:</label>
+  <input type="text" id="proof" name="proof">
 
   <input type="submit" value="Submit">
+
+<!--data validation-->
+<?php
+$artist = $releasetitle = $releasedate = $catalogno = $upload = " ";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+}
+
+//trims whitespace, avoid $_SERVER["PHP_SELF"] exploits
+function test_input($data) {
+$data = trim($data);
+$data = stripslashes($data);
+$data = htmlspecialchars($data);
+return $data;
+}
+
+//error handling
+
+?>
 
 </form>
 </body>
