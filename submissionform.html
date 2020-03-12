@@ -3,87 +3,121 @@
 <head>
   <!doctype html>
   <html lang="en">
-    <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Submit</title>
+  <title>Submit</title>
+  <style>
+  body {
+    padding-top: 2%;
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  form input {
+    width: 100%;
+  }
+
+  /*make the form inputs rounded n shit*/
+  form-control {
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+</style>
 </head>
 <body>
   <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <style>
-    body {
-      padding-top: 2%;
-      padding-left: 8%;
-      padding-right: 8%;
-  }
-    </style>
+  <h1>SpekCheck</h1>
 
-<h1>SpekCheck</h1>
+  <!--submission fields-->
+  <form action="/submission.php">
+    <div class="form-row">
+      <div class="col">
+        <input type="text" id="artist" name="artist" placeholder="Artist"></span>
+      </div>
 
-<!--submission fields-->
-<form action="/submission.php">
-  <label for="artist">Artist:</label>
-  <input type="text" id="artist" name="artist">
-  <span class="error">* <?php echo $artistErr;?></span><br>
+      <div class="col">
+        <input type="text" id="title" name="title" placeholder="Title"></span>
+      </div>
+    </div><!--name input ends here-->
+    <br>
 
-  <label for="releasetitle">Title:</label>
-  <input type="text" id="releasetitle" name="releasetitle">
-  <span class="error">* <?php echo $releasetitleErr;?></span><br>
+    <div class="form-row">
+      <div class="col">
+        <label for="format">Format</label>
+        <!--file format dropdown-->
+        <select id="format">
+          <option value="CD">CD</option>
+          <option value="Digital">Digital</option>
+          <option value="Vinyl">Vinyl</option>
+        </select></div>
+        <!--need to make initial input blank; error when format isnt selected <span class="error">* <?php echo $formatErr;?></span><br>-->
+        <div class="col">
+          <div class="form-group" id="format-toggle">
+            <input type="text" id="catalog-no" placeholder="Catalog Number">
+          </div>
 
-  <label for="format">Format:</label>
-  <!--file format dropdown-->
-  <select id="format">
-    <option value="CD">CD</option>
-    <option value="Digital">Digital</option>
-    <option value="Vinyl">Vinyl</option>
-  </select>
-  <span class="error">* <?php echo $formatErr;?></span><br>
+        </div>
+      </div>
 
-  <label for="releasedate">Release date:</label>
-  <input type="date" id="releasedate" name="releasedate">
-  <span class="error">* <?php echo $releasedateErr;?></span><br>
+      <div class="form-row">
+        <div class="col">
+          <label for="release-date">Release date</label>
+        </div>
+          <div class="col">
+          <input type="date" id="release-date" name="release-date">
+          <span class="error">*<?php echo $releasedateErr;?></span>
+        </div>
 
-<div class="form-group" id="physical-catalog-number">
-  <label for="catalog-no">Catalog number:</label>
-  <input type="text" id="catalogno" name="catalogno"><br>
+        <div class="col-8">
+          <input type="text" id="source" name="source" placeholder="Source (self-rip, torrent...)">
 
-  <label for="reference">Reference:</label>
-  <input type="text" id="reference" name="reference">
-  <span class="error">* <?php echo $referenceErr;?></span><br>
+        </div>
+      </div>
 
-  <label for="proof">Source:</label>
-  <input type="text" id="source" name="source"><br>
+      <input type="text" id="reference" name="reference" placeholder="Reference URL (Discogs, RYM...)">
+      <span class="error">* <?php echo $referenceErr;?></span><br>
 
-  <label for="upload">Your files:</label>
-  <input type="file" id="upload">
-  <span class="error">* <?php echo $referenceErr;?></span><br>
+      <label for="upload">Your files</label>
+      <input type="file" id="upload">
+      <span class="error">* <?php echo $referenceErr;?></span><br>
 
-  <input type="submit" value="Submit"><br><br>
+      <input type="submit" value="Submit"><br><br>
 
-  <!--submission standards-->
-  <b>Artist</b> and <b>Title</b> must follow proper capitalization.<br>
-  <b>Reference</b> should be a link to music database for the release you're uploading.<br>
-  <b>Source</b> refers to where you obtained the audio files. We expect you to be honest.<br>
-  <b>File types</b> accepted include: all audio formats, all image formats and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.
+      <!--submission standards-->
+      <p class="text-justify"><b>Artist</b> and <b>Title</b> must follow proper capitalization.</p>
+      <p class="text-justify"><b>Reference</b> should be a link to a music database for the release you're uploading.</p>
+      <p class="text-justify"><b>Source</b> refers to where you obtained the audio files. We expect you to be honest.</p>
+      <p class="text-justify"><b>File types</b> accepted: all audio formats, all image formats and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.</p>
 
-</div>
+    </div>
+  </div>
 
-<!--data validation-->
-<?php
-$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = $formatErr " ";
-$artist = $releasetitle = $releasedate = $catalogno = $upload = $format = $reference = " ";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  <!--data validation-->
+  <?php
+  $artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = $formatErr " ";
+  $artist = $releasetitle = $releasedate = $catalogno = $upload = $format = $reference = " ";
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["artist"])) {
       $artistErr = " ";
     } else {
@@ -99,18 +133,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //validate that reference input is a valid URL
     if (empty($_POST["reference"])) {
       $reference = "";
-  } else {
-    $reference = test_input($_POST["reference"]);
-if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-  $referenceErr = "Invalid URL";
-}
-
-//make sure this check isn't done for digital releases when you get around to it
-    if (empty($_POST["catalogno"])) {
-      $catalognoErr = " ";
     } else {
-      $catalogno = test_input($_POST["catalogno"]);
-    }
+      $reference = test_input($_POST["reference"]);
+      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+        $referenceErr = "Invalid URL";
+      }
+
+      //make sure this check isn't done for digital releases when you get around to it
+      if (empty($_POST["catalogno"])) {
+        $catalognoErr = " ";
+      } else {
+        $catalogno = test_input($_POST["catalogno"]);
+      }
 
     }
   }
@@ -119,15 +153,14 @@ if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-
 
 //trims whitespace, avoid $_SERVER["PHP_SELF"] exploits
 function test_input($data) {
-$data = trim($data);
-$data = stripslashes($data);
-$data = htmlspecialchars($data);
-return $data;
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
 }
 
 //error handling
 ?>
-
 </form>
 </body>
 </html>
