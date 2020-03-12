@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+  <h1>SpekCheck</h1>
+  <h2>Submit</h2>
+
+<!--submission fields-->
+<form action="/submission.php">
+  <label for="artist">Artist:</label>
+  <input type="text" id="artist" name="artist">
+  <span class="error">* <?php echo $artistErr;?></span><br><br>
+
+  <label for="releasetitle">Title:</label>
+  <input type="text" id="releasetitle" name="releasetitle">
+  <span class="error">* <?php echo $releasetitleErr;?></span><br><br>
+
+  <label for="releasedate">Release date:</label>
+  <input type="date" id="releasedate" name="releasedate">
+  <span class="error">* <?php echo $releasedateErr;?></span><br><br>
+
+  <label for="catalog-no">Catalog number:</label>
+  <input type="text" id="catalogno" name="catalogno">
+  <span class="error">* <?php echo $catalognoErr;?></span><br><br>
+
+  <label for="format">Format:</label>
+  <!--file format dropdown-->
+  <select id="format">
+    <option value="CD">CD</option>
+    <option value="Digital">Digital</option>
+    <option value="Vinyl">Vinyl</option>
+  </select><br><br>
+
+  <label for="upload">Your files:</label>
+  <input type="file" id="upload" accept="audio/*"><br><br>
+
+  <label for="proof">Source:</label>
+  <input type="text" id="source" name="source"><br><br>
+
+  <input type="submit" value="Submit">
+
+<!--data validation-->
+<?php
+$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = " ";
+$artist = $releasetitle = $releasedate = $catalogno = $upload = " ";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["artist"])) {
+      $artistErr = " ";
+    } else {
+      $artist = test_input($_POST["artist"]);
+    }
+
+    if (empty($_POST["releasetitle"])) {
+      $releasetitleErr = " ";
+    } else {
+      $releasetitle = test_input($_POST["releasetitle"]);
+    }
+
+//make sure this check isn't made for digital releases when you get around to it
+    if (empty($_POST["catalogno"])) {
+      $catalognoErr = " ";
+    } else {
+      $catalogno = test_input($_POST["catalogno"]);
+    }
+
+    }
+  }
+
+}
+
+//trims whitespace, avoid $_SERVER["PHP_SELF"] exploits
+function test_input($data) {
+$data = trim($data);
+$data = stripslashes($data);
+$data = htmlspecialchars($data);
+return $data;
+}
+
+//error handling
+?>
+
+</form>
+</body>
+</html>
