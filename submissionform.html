@@ -51,7 +51,7 @@
   <input type="text" id="catalogno" name="catalogno">
   <span class="error">* <?php echo $catalognoErr;?></span><br>
 
-  <label for="reference">Discogs reference:</label>
+  <label for="reference">Reference:</label>
   <input type="text" id="reference" name="reference">
   <span class="error">* <?php echo $referenceErr;?></span><br>
 
@@ -61,13 +61,22 @@
   <label for="upload">Your files:</label>
   <input type="file" id="upload"><br><br>
 
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit"><br><br>
+
+  <!--submission standards-->
+  <b>Artist</b> and <b>Title</b> must follow proper capitalization.<br>
+  <b>Reference</b> should be a link to Discogs or RateYourMusic for the release you're uploading.<br>
+  <b>Source</b> refers to where you obtained the audio files. We expect you to be honest.<br>
+  <b>File types</b> accepted include: all audio formats, all image formats and cue/log. Providing cue/log files is greatly appreciated.
+
+
+
 </div>
 
 <!--data validation-->
 <?php
 $artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = $formatErr " ";
-$artist = $releasetitle = $releasedate = $catalogno = $upload = $format " ";
+$artist = $releasetitle = $releasedate = $catalogno = $upload = $format = $reference = " ";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["artist"])) {
@@ -81,6 +90,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
       $releasetitle = test_input($_POST["releasetitle"]);
     }
+
+    //validate discogs reference input
+    if (empty($_POST["reference"])) {
+      $reference = "";
+  } else {
+    $reference = test_input($_POST["reference"]);
+if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+  $referenceErr = "Invalid URL";
+}
 
 //make sure this check isn't done for digital releases when you get around to it
     if (empty($_POST["catalogno"])) {
