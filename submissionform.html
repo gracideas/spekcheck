@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-</style>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>SpekCheck | Submit</title>
 </head>
 <body>
-  <h1>SpekCheck</h1>
-  <h2>Submit</h2>
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<div class="container-fluid">
+
+<h1>SpekCheck</h1>
 
 <!--submission fields-->
 <form action="/submission.php">
   <label for="artist">Artist:</label>
   <input type="text" id="artist" name="artist">
-  <span class="error">* <?php echo $artistErr;?></span><br><br>
+  <span class="error">* <?php echo $artistErr;?></span><br>
 
   <label for="releasetitle">Title:</label>
   <input type="text" id="releasetitle" name="releasetitle">
-  <span class="error">* <?php echo $releasetitleErr;?></span><br><br>
-
-  <label for="releasedate">Release date:</label>
-  <input type="date" id="releasedate" name="releasedate">
-  <span class="error">* <?php echo $releasedateErr;?></span><br><br>
-
-  <label for="catalog-no">Catalog number:</label>
-  <input type="text" id="catalogno" name="catalogno">
-  <span class="error">* <?php echo $catalognoErr;?></span><br><br>
+  <span class="error">* <?php echo $releasetitleErr;?></span><br>
 
   <label for="format">Format:</label>
   <!--file format dropdown-->
@@ -32,20 +40,41 @@
     <option value="CD">CD</option>
     <option value="Digital">Digital</option>
     <option value="Vinyl">Vinyl</option>
-  </select><br><br>
+  </select>
+  <span class="error">* <?php echo $formatErr;?></span><br>
 
-  <label for="upload">Your files:</label>
-  <input type="file" id="upload" accept="audio/*"><br><br>
+  <label for="releasedate">Release date:</label>
+  <input type="date" id="releasedate" name="releasedate">
+  <span class="error">* <?php echo $releasedateErr;?></span><br>
+
+  <label for="catalog-no">Catalog number:</label>
+  <input type="text" id="catalogno" name="catalogno">
+  <span class="error">* <?php echo $catalognoErr;?></span><br>
+
+  <label for="reference">Reference:</label>
+  <input type="text" id="reference" name="reference">
+  <span class="error">* <?php echo $referenceErr;?></span><br>
 
   <label for="proof">Source:</label>
-  <input type="text" id="source" name="source"><br><br>
+  <input type="text" id="source" name="source"><br>
 
-  <input type="submit" value="Submit">
+  <label for="upload">Your files:</label>
+  <input type="file" id="upload"><br><br>
+
+  <input type="submit" value="Submit"><br><br>
+
+  <!--submission standards-->
+  <b>Artist</b> and <b>Title</b> must follow proper capitalization.<br>
+  <b>Reference</b> should be a link to Discogs or RateYourMusic for the release you're uploading.<br>
+  <b>Source</b> refers to where you obtained the audio files. We expect you to be honest.<br>
+  <b>File types</b> accepted include: all audio formats, all image formats and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.
+
+</div>
 
 <!--data validation-->
 <?php
-$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = " ";
-$artist = $releasetitle = $releasedate = $catalogno = $upload = " ";
+$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = $formatErr " ";
+$artist = $releasetitle = $releasedate = $catalogno = $upload = $format = $reference = " ";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["artist"])) {
@@ -60,7 +89,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $releasetitle = test_input($_POST["releasetitle"]);
     }
 
-//make sure this check isn't made for digital releases when you get around to it
+    //validate discogs reference input
+    if (empty($_POST["reference"])) {
+      $reference = "";
+  } else {
+    $reference = test_input($_POST["reference"]);
+if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+  $referenceErr = "Invalid URL";
+}
+
+//make sure this check isn't done for digital releases when you get around to it
     if (empty($_POST["catalogno"])) {
       $catalognoErr = " ";
     } else {

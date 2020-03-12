@@ -3,13 +3,11 @@ databases
     username/salted hashed password
     algorithm: https://www.npmjs.com/package/bcrypt
   HIGH spectographs
-    submitter/artist/album/release date/format/catalog ID/song/verified?
+    submitter/artist/release title/release date/format/catalog ID/song/verified?
     catalog ID/song/spectographs
   LOW level up system
     username/verified submissions/rank
     gotta figure out why phpadmin isnt working on my pc grr
 HIGH submission form
-  php form
-add error messages n whatever
-
-gotta add meta charset attribute for non english names 
+  ** hide catalog id for digital releases (RESPONSIVE DESIGN)
+add error messages
