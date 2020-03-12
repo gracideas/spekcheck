@@ -26,6 +26,10 @@
   <input type="text" id="catalogno" name="catalogno">
   <span class="error">* <?php echo $catalognoErr;?></span><br><br>
 
+  <label for="reference">Release date:</label>
+  <input type="text" id="reference" name="reference">
+  <span class="error">* <?php echo $referenceErr;?></span><br><br>
+
   <label for="format">Format:</label>
   <!--file format dropdown-->
   <select id="format">
@@ -44,7 +48,7 @@
 
 <!--data validation-->
 <?php
-$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = " ";
+$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = " ";
 $artist = $releasetitle = $releasedate = $catalogno = $upload = " ";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -60,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $releasetitle = test_input($_POST["releasetitle"]);
     }
 
-//make sure this check isn't made for digital releases when you get around to it
+//make sure this check isn't done for digital releases when you get around to it
     if (empty($_POST["catalogno"])) {
       $catalognoErr = " ";
     } else {
