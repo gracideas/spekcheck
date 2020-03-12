@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+  <h1>Submit</h1>
+
+<!--submission fields-->
+<form action="/submission.php">
+  <label for="artist-name">Artist:</label>
+  <input type="text" id="artist-name" name="artist-name"><br><br>
+
+  <label for="release-title">Title:</label>
+  <input type="text" id="release-title" name="release-title"><br><br>
+
+  <label for="release-date">Release date:</label>
+  <input type="date" id="release-date" name="release-date"><br><br>
+
+  <label for="catalog-no">Catalog number:</label>
+  <input type="text" id="catalog-no" name="catalog-no"><br><br>
+
+  <label for="format">Format:</label>
+  <!--format dropdown-->
+  <select id="format">
+    <option value="CD">CD</option>
+    <option value="Digital">Digital</option>
+    <option value="Vinyl">Vinyl</option>
+  </select><br><br>
+
+  <label for="song-upload">Your files:</label>
+  <input type="file" id="song-upload" accept="audio/*"><br><br>
+
+  <input type="submit" value="Submit">
+
+</form>
+</body>
+</html>
