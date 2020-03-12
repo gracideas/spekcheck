@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-</style>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>SpekCheck | Submit</title>
 </head>
 <body>
-  <h1>SpekCheck</h1>
-  <h2>Submit</h2>
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<div class="container-fluid">
+
+<h1>SpekCheck</h1>
 
 <!--submission fields-->
 <form action="/submission.php">
   <label for="artist">Artist:</label>
   <input type="text" id="artist" name="artist">
-  <span class="error">* <?php echo $artistErr;?></span><br><br>
+  <span class="error">* <?php echo $artistErr;?></span><br>
 
   <label for="releasetitle">Title:</label>
   <input type="text" id="releasetitle" name="releasetitle">
-  <span class="error">* <?php echo $releasetitleErr;?></span><br><br>
-
-  <label for="releasedate">Release date:</label>
-  <input type="date" id="releasedate" name="releasedate">
-  <span class="error">* <?php echo $releasedateErr;?></span><br><br>
-
-  <label for="catalog-no">Catalog number:</label>
-  <input type="text" id="catalogno" name="catalogno">
-  <span class="error">* <?php echo $catalognoErr;?></span><br><br>
-
-  <label for="reference">Release date:</label>
-  <input type="text" id="reference" name="reference">
-  <span class="error">* <?php echo $referenceErr;?></span><br><br>
+  <span class="error">* <?php echo $releasetitleErr;?></span><br>
 
   <label for="format">Format:</label>
   <!--file format dropdown-->
@@ -36,20 +40,34 @@
     <option value="CD">CD</option>
     <option value="Digital">Digital</option>
     <option value="Vinyl">Vinyl</option>
-  </select><br><br>
+  </select>
+  <span class="error">* <?php echo $formatErr;?></span><br>
 
-  <label for="upload">Your files:</label>
-  <input type="file" id="upload" accept="audio/*"><br><br>
+  <label for="releasedate">Release date:</label>
+  <input type="date" id="releasedate" name="releasedate">
+  <span class="error">* <?php echo $releasedateErr;?></span><br>
+
+  <label for="catalog-no">Catalog number:</label>
+  <input type="text" id="catalogno" name="catalogno">
+  <span class="error">* <?php echo $catalognoErr;?></span><br>
+
+  <label for="reference">Discogs reference:</label>
+  <input type="text" id="reference" name="reference">
+  <span class="error">* <?php echo $referenceErr;?></span><br>
 
   <label for="proof">Source:</label>
-  <input type="text" id="source" name="source"><br><br>
+  <input type="text" id="source" name="source"><br>
+
+  <label for="upload">Your files:</label>
+  <input type="file" id="upload"><br><br>
 
   <input type="submit" value="Submit">
+</div>
 
 <!--data validation-->
 <?php
-$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = " ";
-$artist = $releasetitle = $releasedate = $catalogno = $upload = " ";
+$artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = $formatErr " ";
+$artist = $releasetitle = $releasedate = $catalogno = $upload = $format " ";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["artist"])) {
