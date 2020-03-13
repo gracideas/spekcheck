@@ -1,5 +1,5 @@
 <?php
-$artistError = $titleError = $formatError = $releaseDateError = $uploadError = $referenceError " ";
+$artistError = $titleError = $formatError = $releaseDateError = $uploadError = $referenceError = " ";
 $artist = $title = $format = $catalogNo = $releaseDate = $upload = $reference = " ";
 
 //define variables per the HTML form
@@ -37,3 +37,13 @@ if (empty($_POST["title"])) {
 
 if (empty($_POST["format"])) {
   $formatError = "Must choose a format";
+
+  if (empty($_POST["reference"])) {
+    $referenceError = "Required field";
+  } else {
+    $title = sanitize_input($_POST["title"]);
+    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "Invalid URL";
+    }
+  }
