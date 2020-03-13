@@ -47,3 +47,4 @@ if (empty($_POST["format"])) {
       $websiteErr = "Invalid URL";
     }
   }
+?>
