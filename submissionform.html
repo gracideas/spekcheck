@@ -11,32 +11,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <title>Submit</title>
-  <style>
-  html {
-    padding-top: 2%;
-    padding-left: 8%;
-    padding-right: 8%;
-  }
 
-  form input {
-    width: 100%;
-  }
-
-  /*make the form inputs pretty*/
-  form-control {
-    border-radius: .25rem;
-    border: 1px solid #ced4da;
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-</style>
 </head>
 <body>
   <!-- Optional JavaScript -->
@@ -45,32 +20,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<div class="container-fluid">
   <h1>SpekCheck</h1>
 
   <!--user input-->
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>
+  <form>
     <div class="form-row">
       <div class="col">
-        <input type="text" id="artist" name="artist" placeholder="Artist"></span>
-        <div class="invalid-feedback">
-        <?php echo $artistError;?>
-        </div>
+        <input type="text" class="form-control" id="artist" name="artist" placeholder="Artist" required>
       </div>
 
       <div class="col">
-        <input type="text" id="title" name="title" placeholder="Title"></span>
-        <div class="invalid-feedback">
-        <?php echo $titleError;?>
-       </div>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
       </div>
     </div><!--name input ends here-->
     <br>
+
     <div class="form-row">
       <div class="col">
         <label for="format">Format</label>
         <!--file format dropdown-->
-        <select id="format">
-          <option value="empty" selected> </option>
+        <select id="format" class="form-control">
           <option value="CD">CD</option>
           <option value="Digital">Digital</option>
           <option value="Vinyl">Vinyl</option>
@@ -82,7 +52,7 @@
 
         <div class="col">
           <div class="form-group" id="format-toggle">
-            <input type="text" id="catalog-no" placeholder="Catalog Number">
+            <input type="text" class="form-control" id="catalog-no" placeholder="Catalog Number">
           </div>
 
         </div>
@@ -93,17 +63,16 @@
           <label for="release-date">Release date</label>
         </div>
         <div class="col">
-          <input type="date" id="release-date" name="release-date">
+          <input type="date" class="form-control" id="release-date" name="release-date" required>
         </div>
 
-        <div class="col-8">
-          <input type="text" id="source" name="source" placeholder="Source (self-rip, torrent...)">
+        <div class="col">
+          <input type="text" class="form-control" id="source" name="source" placeholder="Source (self-rip, torrent...)">
 
         </div>
       </div>
 
-      <input type="text" id="reference" name="reference" placeholder="Reference URL (Discogs, RYM...)">
-      <span class="error">* <?php echo $referenceErr;?></span><br>
+      <input type="text" class="form-control" id="reference" name="reference" placeholder="Reference URL (Discogs, RYM...)"><br>
 
       <label for="upload">Your files</label>
       <input type="file" id="upload" accept="audio/*,image/*,.cue,.log">
@@ -118,6 +87,7 @@
       <p class="text-justify"><b>File types</b> accepted: all audio formats, all image formats and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.</p>
 
     </div>
+      </div>
   </form>
 </body>
 </html>
