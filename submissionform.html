@@ -52,10 +52,16 @@
     <div class="form-row">
       <div class="col">
         <input type="text" id="artist" name="artist" placeholder="Artist"></span>
+        <div class="invalid-feedback">
+        <?php echo $artistError;?>
+        </div>
       </div>
 
       <div class="col">
         <input type="text" id="title" name="title" placeholder="Title"></span>
+        <div class="invalid-feedback">
+        <?php echo $titleError;?>
+       </div>
       </div>
     </div><!--name input ends here-->
     <br>
@@ -68,7 +74,11 @@
           <option value="CD">CD</option>
           <option value="Digital">Digital</option>
           <option value="Vinyl">Vinyl</option>
-        </select></div>
+        </select>
+        <div class="invalid-feedback">
+        <?php echo $formatError;?>
+       </div>
+      </div>
 
         <div class="col">
           <div class="form-group" id="format-toggle">
@@ -84,7 +94,6 @@
         </div>
         <div class="col">
           <input type="date" id="release-date" name="release-date">
-          <span class="error">*<?php echo $releasedateErr;?></span>
         </div>
 
         <div class="col-8">

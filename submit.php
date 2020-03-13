@@ -1,6 +1,6 @@
 <?php
-$artistError = $titleError = $formatError = $catalogNoError = $releaseDateError = $uploadError = " ";
-$artist = $title = $format = $catalogNo = $releaseDate = $upload = " ";
+$artistError = $titleError = $formatError = $releaseDateError = $uploadError = $referenceError " ";
+$artist = $title = $format = $catalogNo = $releaseDate = $upload = $reference = " ";
 
 //define variables per the HTML form
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $releaseDate = $_POST['release-date'];
   $source = $_POST['source'];
   $upload = $_POST['upload'];
+  $reference = $_POST['reference'];
 }
 
 //protects against SQL injections and $_SERVER["PHP_SELF"] exploits
@@ -25,13 +26,13 @@ function sanitize_input($data) {
 if (empty($_POST["artist"])) {
   $artistError = "Required field";
 } else {
-  $artist = test_input($_POST["artist"]);
+  $artist = sanitize_input($_POST["artist"]);
 }
 
 if (empty($_POST["title"])) {
   $titleError = "Required field";
 } else {
-  $title = test_input($_POST["title"]);
+  $title = sanitize_input($_POST["title"]);
 }
 
 if (empty($_POST["format"])) {
