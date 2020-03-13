@@ -6,6 +6,9 @@ body {
   --btn: #2ab1ce;
   --backg: #fff;
   --colorx: #232323;
+  }
+
+container-fluid {
   padding-top: 2%;
   padding-left: 8%;
   padding-right: 8%;
