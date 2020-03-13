@@ -3,8 +3,10 @@ databases
     username/salted hashed password
     algorithm: https://www.npmjs.com/package/bcrypt
   HIGH spectographs
-    submitter/artist/release title/release date/format/catalog ID/song/verified?
+    entryid/submitter/
+    entryid/artist/release title/release date/format/catalog ID/song/verified?
     catalog ID/song/spectographs
+
   LOW level up system
     username/verified submissions/rank
     gotta figure out why phpadmin isnt working on my pc grr

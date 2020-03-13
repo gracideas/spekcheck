@@ -22,7 +22,7 @@
     width: 100%;
   }
 
-  /*make the form inputs rounded n shit*/
+  /*make the form inputs pretty*/
   form-control {
     border-radius: .25rem;
     border: 1px solid #ced4da;
@@ -47,29 +47,39 @@
 
   <h1>SpekCheck</h1>
 
-  <!--submission fields-->
-  <form action="/submission.php">
+  <!--user input-->
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>
     <div class="form-row">
       <div class="col">
         <input type="text" id="artist" name="artist" placeholder="Artist"></span>
+        <div class="invalid-feedback">
+        <?php echo $artistError;?>
+        </div>
       </div>
 
       <div class="col">
         <input type="text" id="title" name="title" placeholder="Title"></span>
+        <div class="invalid-feedback">
+        <?php echo $titleError;?>
+       </div>
       </div>
     </div><!--name input ends here-->
     <br>
-
     <div class="form-row">
       <div class="col">
         <label for="format">Format</label>
         <!--file format dropdown-->
         <select id="format">
+          <option value="empty" selected> </option>
           <option value="CD">CD</option>
           <option value="Digital">Digital</option>
           <option value="Vinyl">Vinyl</option>
-        </select></div>
-        <!--need to make initial input blank; error when format isnt selected <span class="error">* <?php echo $formatErr;?></span><br>-->
+        </select>
+        <div class="invalid-feedback">
+        <?php echo $formatError;?>
+       </div>
+      </div>
+
         <div class="col">
           <div class="form-group" id="format-toggle">
             <input type="text" id="catalog-no" placeholder="Catalog Number">
@@ -84,7 +94,6 @@
         </div>
         <div class="col">
           <input type="date" id="release-date" name="release-date">
-          <span class="error">*<?php echo $releasedateErr;?></span>
         </div>
 
         <div class="col-8">
@@ -97,62 +106,18 @@
       <span class="error">* <?php echo $referenceErr;?></span><br>
 
       <label for="upload">Your files</label>
-      <input type="file" id="upload">
+      <input type="file" id="upload" accept="audio/*,image/*,.cue,.log">
       <span class="error">* <?php echo $referenceErr;?></span><br>
 
       <input type="submit" value="Submit"><br><br>
 
-      <!--submission standards-->
+      <!--submission guidelines-->
       <p class="text-justify"><b>Artist</b> and <b>Title</b> must follow proper capitalization.</p>
       <p class="text-justify"><b>Reference</b> should be a link to a music database for the release you're uploading.</p>
       <p class="text-justify"><b>Source</b> refers to where you obtained the audio files. We expect you to be honest.</p>
       <p class="text-justify"><b>File types</b> accepted: all audio formats, all image formats and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.</p>
 
     </div>
-  </div>
-
-
-  <!--data validation-->
-  <?php
-  $artistErr = $releasetitleErr = $releasedateErr = $catalognoErr = $uploadErr = $referenceErr = $formatErr " ";
-  $artist = $releasetitle = $releasedate = $catalogno = $upload = $format = $reference = " ";
-
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["artist"])) {
-      $artistErr = " ";
-    } else {
-      $artist = test_input($_POST["artist"]);
-    }
-
-    if (empty($_POST["releasetitle"])) {
-      $releasetitleErr = " ";
-    } else {
-      $releasetitle = test_input($_POST["releasetitle"]);
-    }
-
-    //validate that reference input is a valid URL
-    if (empty($_POST["reference"])) {
-      $reference = "";
-    } else {
-      $reference = test_input($_POST["reference"]);
-      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-        $referenceErr = "Invalid URL";
-      }
-    }
-  }
-
-}
-
-//trims whitespace, avoid $_SERVER["PHP_SELF"] exploits
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
-//error handling
-?>
-</form>
+  </form>
 </body>
 </html>
