@@ -1,5 +1,6 @@
 /*var inserts the value of a custom property
 the --attributes are custom properties*/
+/* darktheme code by webdevtrick ( https://webdevtrick.com ) */
 body {
   background: var(--backg);
   --btn: #2ab1ce;
