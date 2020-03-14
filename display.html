@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://raw.githubusercontent.com/gracideas/spekcheck/master/style.css">
 
-  <title>Submit</title>
+  <title>Artist - Album</title>
   <style>
     body {
       padding-top: 2%;
@@ -29,28 +29,22 @@
 
   <h1>SpekCheck</h1>
 
-  <!--user input-->
-  <form>
-    <div class="form-row">
-      <div class="col">
-        <input type="text" class="form-control" id="MBID" name="MBID" placeholder="MusicBrainz ID" required>
-      </div>
-    <br>
+<!-- metadata -->
+Artist<br>
+Name<br>
+Release date<br>
+Catalog Number<br>
 
-    <div class="col">
-      <input type="text" class="form-control" id="source" name="source" placeholder="Source (self-rip, torrent...)">
-    </div>
-  </div>
+<!-- identifiers -->
+MusicBrainz ID<br>
 
-  <br>
-  <input type="file" id="upload" accept="audio/*,image/*,.cue,.log"> <br><br>
+<!-- quality info, can go under the spectograph? -->
+Format<br>
+Filetype<br>
+Bitrate<br>
 
-  <input type="submit" value="Submit" class="btn btn-primary"><br><br>
+<button id="outdatedInfo" class="btn">Report outdated metadata</button>
 
-  <!--submission guidelines-->
-  <p class="text-justify">What is a <b><a href=https://musicbrainz.org/doc/MusicBrainz_Identifier>MusicBrainz ID</a></b>?</p>
-  <p class="text-justify"><b>Source</b> refers to how and where you obtained the audio files. We expect you to be honest!</p>
-  <p class="text-justify"><b>File types</b> accepted: all audio formats, all image formats, .txt files (for additional release information) and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.</p>
 </form>
 </body>
 </html>
