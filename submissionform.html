@@ -12,7 +12,13 @@
   <link rel="stylesheet" href="https://raw.githubusercontent.com/gracideas/spekcheck/master/style.css">
 
   <title>Submit</title>
-
+  <style>
+    body {
+      padding-top: 2%;
+      padding-left: 8%;
+      padding-right: 8%;
+    }
+  </style>
 </head>
 <body>
   <!-- Optional JavaScript -->
@@ -23,71 +29,30 @@
 
   <h1>SpekCheck</h1>
 
+
   <!--user input-->
   <form>
     <div class="form-row">
       <div class="col">
-        <input type="text" class="form-control" id="artist" name="artist" placeholder="Artist" required>
+        <input type="text" class="form-control" id="MBID" name="MBID" placeholder="MusicBrainz Identifier" required>
       </div>
-
-      <div class="col">
-        <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
-      </div>
-    </div><!--name input ends here-->
     <br>
 
-    <div class="form-row">
-      <div class="col">
-        <label for="format">Format</label>
-        <!--file format dropdown-->
-        <select id="format" class="form-control">
-          <option value="CD">CD</option>
-          <option value="Digital">Digital</option>
-          <option value="Vinyl">Vinyl</option>
-        </select>
-        <div class="invalid-feedback">
-        <?php echo $formatError;?>
-       </div>
-      </div>
-
-        <div class="col">
-          <div class="form-group" id="format-toggle">
-            <input type="text" class="form-control" id="catalog-no" placeholder="Catalog Number">
-          </div>
-
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col">
-          <label for="release-date">Release date</label>
-        </div>
-        <div class="col">
-          <input type="date" class="form-control" id="release-date" name="release-date" required>
-        </div>
-
-        <div class="col">
-          <input type="text" class="form-control" id="source" name="source" placeholder="Source (self-rip, torrent...)">
-
-        </div>
-      </div>
-
-      <input type="text" class="form-control" id="reference" name="reference" placeholder="Reference URL (Discogs, RYM...)"><br>
-
-      <label for="upload">Your files</label>
-      <input type="file" id="upload" accept="audio/*,image/*,.cue,.log">
-      <span class="error">* <?php echo $referenceErr;?></span><br>
-
-      <input type="submit" value="Submit"><br><br>
-
-      <!--submission guidelines-->
-      <p class="text-justify"><b>Artist</b> and <b>Title</b> must follow proper capitalization.</p>
-      <p class="text-justify"><b>Reference</b> should be a link to a music database for the release you're uploading.</p>
-      <p class="text-justify"><b>Source</b> refers to where you obtained the audio files. We expect you to be honest.</p>
-      <p class="text-justify"><b>File types</b> accepted: all audio formats, all image formats and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.</p>
-
+    <div class="col">
+      <input type="text" class="form-control" id="source" name="source" placeholder="Source (self-rip, torrent...)">
     </div>
-      </div>
-  </form>
+  </div>
+
+  <label for="upload">Your files</label>
+  <br>
+  <input type="file" id="upload" accept="audio/*,image/*,.cue,.log">
+  <br>
+  <input type="submit" value="Submit"><br><br>
+
+  <!--submission guidelines-->
+  <p class="text-justify">Every submission requires the inclusion of the release's <b>MusicBrainz Identifier</b>.</p>
+  <p class="text-justify"><b>Source</b> refers to where you obtained the audio files. We expect you to be honest.</p>
+  <p class="text-justify"><b>File types</b> accepted: all audio formats, all image formats, .txt files (for additional release information) and cue/log. Providing cue/log (CD) and lineage (Vinyl) is greatly appreciated.</p>
+</form>
 </body>
 </html>
