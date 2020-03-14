@@ -11,9 +11,9 @@
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Guidelines</title>
+    <title>Guidelines · SpekCheck</title>
   <style>
-html {
+.container-fluid {
     padding-top: 2%;
     padding-left: 8%;
     padding-right: 8%;
@@ -21,35 +21,48 @@ html {
   </style>
 </head>
 <body>
-<div class="container-fluid">
-  <h1>SpekCheck</h1>
-    <h2>Guidelines</h2>
-    <h3>Capitalization</h3>
-    <p class="text-justify">We follow <a href="https://rateyourmusic.com/wiki/RYM:Capitalization">RateYourMusic's standards for capitalization</a>. The exception is non-standard capitalization with artistic intent.</p>
 
-    <h3>References</h3>
-    <p class="text-justify">Include a link to a music database to verify the existence of the release you're uploading. Some databases you may reference:</p>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><h1>SpekCheck</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">New Entry</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Guidelines<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Download DB</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/gracideas/spekcheck">GitHub</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
 
-    <!-- reference table -->
-    <div class="container" style="text-align: center;">
-      <div class="row">
-        <div class="col"><p class="text-center"><a href="https://www.discogs.com/">Discogs</a></p></div>
-        <div class="col"><p class="text-center"><a href="https://rateyourmusic.com/">RateYourMusic</a></p></div>
-      </div>
-    <div class="row">
-      <div class="col"><p class="text-center"><a href="https://musicbrainz.org/">MusicBrainz</a></p></div>
-      <div class="col"><p class="text-center"><a href="https://vocadb.net/">VocaDB</a></p></div>
-    </div>
-    <div class="row">
-      <div class="col"><p class="text-center"><a href="https://www.metal-archives.com/">Encyclopedia Metallum</a></p></div>
-      <div class="col"><p class="text-center"><a href="https://www.allmusic.com/">AllMusic</a></p></div>
-    </div>
+  <div class="container-fluid">
 
-    </div>
-    <h3>Sources</h3>
+    <h2>MusicBrainz ID</h2>
+    <p class="text-justify">With each submission to the database, you must include the release's <b><a href=https://musicbrainz.org/doc/MusicBrainz_Identifier>MusicBrainz ID</a></b>. Make sure you select the correct issue for your upload!</p>
+    <h2>Sources</h2>
     <p class="text-justify">Mention the website, tracker or method through which you obtained the audio files. We expect you to be honest, as this helps users discern sources with lossy transcodes. It's okay to leave this empty if you don't know the source.</p>
-    <h3>Uploads</h3>
-    <p class="text-justify">All lossless and lossy audio files are allowed. Providing cue/log files for CD rips is appreciated, as it helps verify the quality of your upload. For vinyl rips, include the lineage (equipment used to rip the record). Your audio files will not be stored after being spectographed and verified (okay, FBI?).</p>
+    <h2>Uploads</h2>
+    <p class="text-justify">All audio and image file types are allowed, plus .txt files for additional information regarding a release. Providing cue/log files for CD rips is appreciated, as it helps verify the quality of your upload. For vinyl rips, include the lineage (equipment used to rip the record). Your audio files will not be stored after being spectographed and verified (okay, FBI?).</p>
 </div>
  <script  src="dark-mode.js"></script>
 </body>
