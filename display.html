@@ -11,13 +11,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://raw.githubusercontent.com/gracideas/spekcheck/master/style.css">
 
-  <title>Artist - Album</title>
+  <title>Artist - Album · SpekCheck</title>
   <style>
-    body {
-      padding-top: 2%;
-      padding-left: 8%;
-      padding-right: 8%;
-    }
+  .container-fluid {
+    padding-top: 2%;
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  img {
+    width: 50%;
+  }
   </style>
 </head>
 <body>
@@ -27,24 +31,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <h1>SpekCheck</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><h1>SpekCheck</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">New Entry</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Guidelines</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Download DB</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/gracideas/spekcheck">GitHub</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <!-- have multiple images available for each file type? maybe -->
+    <img src="https://raw.githubusercontent.com/gracideas/spekcheck/musicbrainz-method/placeholder.png" alt="placeholder">
 
-<!-- metadata -->
-Artist<br>
-Name<br>
-Release date<br>
-Catalog Number<br>
+    <!-- metadata -->
+    Artist<br>
+    Name<br>
+    Release date<br>
+    Catalog Number<br>
+    MusicBrainz ID<br>
 
-<!-- identifiers -->
-MusicBrainz ID<br>
+    <!-- quality info, can go under the spectograph? -->
+    Format<br>
+    Filetype<br>
+    Bitrate<br>
+    Verified?<br>
 
-<!-- quality info, can go under the spectograph? -->
-Format<br>
-Filetype<br>
-Bitrate<br>
-
-<button id="outdatedInfo" class="btn">Report outdated metadata</button>
-
-</form>
+    <button id="outdatedInfo" class="btn">Report outdated metadata</button>
+  </div>
 </body>
 </html>

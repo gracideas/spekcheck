@@ -11,9 +11,9 @@
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Guidelines</title>
+    <title>Guidelines · SpekCheck</title>
   <style>
-html {
+.container-fluid {
     padding-top: 2%;
     padding-left: 8%;
     padding-right: 8%;
@@ -22,9 +22,40 @@ html {
 </head>
 <body>
 
-  <h1>SpekCheck</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><h1>SpekCheck</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">New Entry</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Guidelines<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Download DB</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/gracideas/spekcheck">GitHub</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
 
-    <h2>Guidelines</h2>
+  <div class="container-fluid">
 
     <h3>MusicBrainz ID</h3>
     <p class="text-justify">With each submission to the database, you may include the release's <b><a href=https://musicbrainz.org/doc/MusicBrainz_Identifier>MusicBrainz ID</a></b>. Make sure you select the correct issue for your upload!</p>
