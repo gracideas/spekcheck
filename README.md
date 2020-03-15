@@ -9,5 +9,5 @@ A human curated open database for audio spectographs. Super unfinished RN
 
 ## Special thanks
 * andrew369 for helping figure out the specifics
-* frnt for helping design the UI
+* frnt for helping with UI design
 * r/musichoarders in general for giving lots of feedback during the entire process
