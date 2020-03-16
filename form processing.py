@@ -1,4 +1,4 @@
-#dependencies: mysql connector, python-musicbrainzngs
+#dependencies: mysql connector, python-musicbrainzngs, mutagen
 !C:\Python27\python.exe -u
 
 import cgi, os
@@ -18,7 +18,8 @@ fileitem = form['filename'] #uploaded files
 mbidCheck = len('musicbrainz_id')
 sourceCheck = source.isupper() or source.islower()
 
-import mysql.connector #run duplicate check
+#run duplicate check
+import mysql.connector
 mydb = mysql.connector.connect(
   host="localhost",
   user="yourusername",
@@ -34,13 +35,10 @@ mycursor.execute(sql, musicbrainz_id)
 
 existingEntry = mycursor.rowcount(mycursor.fetchall())
 
-if existingEntry > 0: #entry already exists
-
-
+if existingEntry != 0: #entry already exists
 
 if mbidCheck < 36:
     message = musicbrainz_id + ' is not a valid MusicBrainz ID'
-
 if sourceCheck == False:
     message = 'You must include a source'
 if fileitem.filename:
@@ -54,12 +52,14 @@ if fileitem.filename:
 else:
     message = 'Entry submitted'
 
+print """\
+Content-Type: text/html\n
+ENTIRE HTML FOR SUBMIT
+""" % (message,)
 
+#
 import musicbrainzngs
 import re
-
-
-WIP
 
 #perform duplicate entry checks WIP
 
