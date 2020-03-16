@@ -62,20 +62,20 @@
 
   <!--user input-->
 <div class="container-fluid">
-  <form>
+  <form enctype = "multipart/form-data" action = "/cgi-bin/backend.py" method = "post">
     <div class="form-row">
       <div class="col">
-        <input type="text" class="form-control" id="MBID" name="MBID" placeholder="MusicBrainz ID" required>
+        <input type="text" class="form-control" value="musicbrainz_id" name="MBID" placeholder="MusicBrainz ID" required>
       </div>
     <br>
 
     <div class="col">
-      <input type="text" class="form-control" id="source" name="source" placeholder="Source (self-rip, torrent...)">
+      <input type="text" class="form-control" value="source" name="source" placeholder="Source (self-rip, torrent...)">
     </div>
   </div>
 
   <br>
-  <input type="file" id="upload" accept="audio/*,image/*,.cue,.log"> <br><br>
+  <input type="file" name="filename" accept="audio/*,image/*,.cue,.log"> <br><br>
 
   <input type="submit" value="Submit" class="btn btn-primary"><br><br>
 
