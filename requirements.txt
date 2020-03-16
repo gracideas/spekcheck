@@ -3,4 +3,8 @@ Flask==1.1.1
 itsdangerous==1.1.0
 Jinja2==2.11.1
 MarkupSafe==1.1.1
+musicbrainzngs==0.7.1
+mutagen==1.44.0
+mysql==0.0.2
+mysqlclient==1.4.6
 Werkzeug==1.0.0
