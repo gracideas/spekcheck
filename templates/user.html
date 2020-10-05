@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <title>toad · SpekCheck</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #main-container {
+            margin-top: 25px;
+        }
+
+        #user-profile-picture-container {
+            width: 100%;
+        }
+
+        #user-profile-picture {
+            width: 60%;
+            object-fit: cover;
+        }
+
+        #user-name {
+            font-size: 48px;
+            margin-top: -10px;
+            margin-bottom: -10px;
+        }
+
+        #user-profession {
+            margin-bottom: 10px;
+        }
+
+        #stats {
+            display: flex;
+            text-align: center;
+        }
+
+        #stats>* {
+            flex: 1;
+        }
+
+        .level-indicator {
+            line-height: 1em;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 8px 8px 35px -10px #000000;
+        }
+
+        .text-icons {
+            height: 1em;
+            margin-right: 5px;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25em;
+        }
+
+        .contributions-box {
+            box-shadow: 12px 12px 55px -30px #000000;
+        }
+
+        .contributions-inner-box {
+            padding: 30px;
+        }
+
+        #contributions-data-labels {
+            width: 80%;
+            font-size: 1.25em;
+        }
+
+        .contributions-break {
+            display: none;
+        }
+
+        @media (max-width: 767.98px) {
+            .contributions-break {
+                display: block;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .social-link {
+                font-size: 1em;
+            }
+
+            #contributions-data-labels {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <h1>SpekCheck</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">New Entry<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Guidelines</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Download DB</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/gracideas/spekcheck">GitHub</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div id="main-container" class="container">
+        <div class="row">
+            <div id="user-info" class="col-4">
+                <div id="user-profile-picture-container" class="text-center"><img id="user-profile-picture" class="rounded-circle" src="pfp.jpg"></div>
+                <div id="user-name" class="font-weight-bold text-center">toad</div>
+                <div id="user-profession" class="font-italic text-muted font-weight-normal text-center">Developer</div>
+                <div id="stats">
+                    <div class="pr-3">
+                        <div class="rounded rounded-circle text-light bg-success level-indicator float-right">
+                            <span>Level<br><span class="font-weight-bold" id="level">27</span></span>
+                        </div>
+                    </div>
+                    <div class="pl-3">
+                        <div class="rounded rounded-circle bg-white level-indicator">
+                            <span class="font-weight-bold">DEV</span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="social-link">
+                    <img src="icons/reddit.png" class="text-icons">
+                    <a href="#" class="text-muted"><span id="user-reddit">u/notreal</span></a>
+                </div>
+                <div class="social-link">
+                    <img src="icons/link.png" class="text-icons">
+                    <a href="#" class="text-muted"><span id="user-website">web.site</span></a>
+                </div>
+            </div>
+            <div class="col" id="contributions">
+                <div id="contributions-stats" class="contributions-box">
+                    <div class="contributions-inner-box">
+                        <span class="float-right font-weight-bold text-muted">Contributions</span>
+                        <br>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 45.9183673469%" aria-valuenow="45.9183673469" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 1.5306122449%" aria-valuenow="1.5306122449" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 5.10204081633%" aria-valuenow="5.10204081633" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 45.9183673469%" aria-valuenow="45.9183673469" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 1.5306122449%" aria-valuenow="1.5306122449" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div id="contributions-data-labels" class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <hr class="contributions-break">
+                                    <div id="user-uploads"><span id="user-uploads-text">Uploads</span><span id="user-uploads-number" class="float-right font-weight-bold">90</span></div>
+                                    <hr class="contributions-break">
+                                    <div id="user-proofs"><span id="user-proofs-text">Proof Documents</span><span id="user-proofs-number" class="float-right font-weight-bold">3</span></div>
+                                    <hr class="contributions-break">
+                                    <div id="user-verifications"><span id="user-verifications-text">Verifications</span><span id="user-verifications-number" class="float-right font-weight-bold">10</span></div>
+                                    <hr class="contributions-break">
+                                </div>
+                                <div class="col">
+                                    <div id="user-corrections"><span id="user-corrections-text">Metadata Corrections</span><span id="user-corrections-number" class="float-right font-weight-bold">90</span></div>
+                                    <hr class="contributions-break">
+                                    <div id="user-issues"><span id="user-issues-text">Github Issues</span><span id="user-issues-number" class="float-right font-weight-bold">3</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div id="test-contrib2" class="contributions-box">
+                    <div class="contributions-inner-box">
+                        test2
+                    </div>
+                </div>
+                <br>
+                <div id="test-contrib3" class="contributions-box">
+                    <div class="contributions-inner-box">
+                        test3
+                    </div>
+                </div>
+                <br>
+                <div id="test-contrib4" class="contributions-box">
+                    <div class="contributions-inner-box">
+                        test4
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var cw = $('#user-profile-picture').width();
+        $('#user-profile-picture').css({
+            'height': cw + 'px'
+        });
+        $(window).on('resize', function() {
+            var cw = $('#user-profile-picture').width();
+            $('#user-profile-picture').css({
+                'height': cw + 'px'
+            });
+        });
+    </script>
+</body>
+
+</html>
