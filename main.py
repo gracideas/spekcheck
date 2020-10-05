@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, url_for, flash, request
+from datetime import datetime
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from forms import SubmissionForm
 
@@ -6,25 +7,36 @@ app = Flask(__name__)
 
 SECRET_KEY = 'hrifrgtkghgt'
 app.config['SECRET_KEY'] = SECRET_KEY
- # Temporary
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-# db = SQLAlchemy(app)
+# Temporary
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
 
 # Database tables
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, unique=True, nullable=False)
+    entry_count = db.Column(db.Integer, unique=False, nullable=False, default=0)
+    moderator = db.Column (db.Boolean, unique=False, nullable=False, default=False)
+    user_id = db.relationship('User', backref='author', lazy=True)
 
-'''class Metadata(db.Model):
+    def __repr__(self):
+        return f"Metadata({self.release_title}, {self.release_artist})"
+
+
+class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     musicbrainz_album_id = db.Column(db.String(36), unique=True, nullable=False)
-    catalog_number = db.Column(db.String, unique=True, nullable=True)
+    catalog_number = db.Column(db.String, unique=True, nullable=False)
     release_artist = db.Column(db.String, unique=False, nullable=False)
     release_group = db.Column(db.String, unique=False, nullable=False)
     physical_format = db.Column(db.String, unique=False, nullable=False)
     audio_format = db.Column(db.String, unique=False, nullable=False)
-    notes = db.Column(db.String, unique=False, nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    notes = db.Column(db.String, unique=False, nullable=False)
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
 
     def __repr__(self):
-        return f"Metadata({self.release_title}, {self.release_artist}" '''
+        return f"Metadata({self.release_title}, {self.release_artist})"
 
 
 # Dummy Entry to test templating
