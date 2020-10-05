@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+{% block content %}
+    <form action="" form enctype="multipart/form-data">
+        {{ form.hidden_tag() }} <!-- Needs to be here for security -->
+            <div class="form-group"><!-- MBID input -->
+                {{ form.musicbrainz_id.label }}
+
+                {{ form.musicbrainz_id(class_='form-control') }}
+
+                <small id="MusicBrainzIDHelp" class="form-text text-muted">Look up the MBID here.</small>
+            </div>
+
+            <div class="form-group"><!-- source input -->
+                {{ form.source.label }}
+                {{ form.source(class_='form-control') }}
+
+                <small class="form-text text-muted">Describe where your files came from, or pictures of the CD if it is your own rip.</small>
+            </div>
+
+            <div class="form-group"><!-- file upload -->
+                {{ form.upload.label }}
+                {{ form.upload(class_='form-control') }}
+
+                <small class="form-text text-muted">File types accepted: all audio formats, .cue and .log files</small>
+
+            </div>
+            {{ form.submit(class_='btn btn-primary') }}
+
+    </form>
+{% endblock %}

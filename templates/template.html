@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <html lang="en">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',    filename='css/template.css') }}">
+
+    {% if title %}
+    <title> {{ title }} | SpekCheck </title>
+    {% else %}
+    <title>SpekCheck</title>
+    {% endif %}
+</head>
+
+<body>
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top my-0">
+        <a class="navbar-brand mx-3" href="{{ url_for('home') }}">SpekCheck</a>
+        <button class="navbar-toggler mx-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="{{ url_for('search') }}"><img src="https://i.postimg.cc/VvdnLD99/search.png" width="20" height="20" alt="Search"></a>
+                </li>
+
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="{{ url_for('leaderboard') }}"><img src="https://i.postimg.cc/zG0KmygY/envelope.png" width="20" height="20" alt="Leaderboard"></a>
+                </li>
+
+                <li class="nav-item dropdown pl-2"> <!-- Profile Picture -->
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://i.postimg.cc/YS5Jxs00/tumblr-8cc2ed2bbc9038cab63189291acfb973-4f10d919-400.png" width="30" height="30" alt="User Settings">
+                        </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"><b>~username</b></a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Upgrade</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+
+
