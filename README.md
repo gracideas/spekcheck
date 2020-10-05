@@ -8,6 +8,6 @@ A human curated open database for audio spectographs. Super unfinished RN
 * Quality control of spectographs through human verification (WIP)
 
 ## Special thanks
-* andrew369 for helping figure out the specifics
+* toad for helping design the layout page's html
 * frnt for helping with UI design
 * r/musichoarders in general for giving lots of feedback during the entire process
