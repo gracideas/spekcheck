@@ -1,6 +1,6 @@
 {% extends "template.html" %}
 {% block content %}
-    <form action="" form enctype="multipart/form-data">
+    <form action="" form enctype="multipart/form-data" method=POST novalidate>
         {{ form.hidden_tag() }} <!-- Needs to be here for security -->
             <div class="form-group"><!-- MBID input -->
                 {{ form.musicbrainz_id.label }}
@@ -8,6 +8,12 @@
                 {{ form.musicbrainz_id(class_='form-control') }}
 
                 <small id="MusicBrainzIDHelp" class="form-text text-muted">Look up the MBID here.</small>
+
+                {% for error in form.musicbrainz_id.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endfor %}
             </div>
 
             <div class="form-group"><!-- source input -->
@@ -15,6 +21,12 @@
                 {{ form.source(class_='form-control') }}
 
                 <small class="form-text text-muted">Describe where your files came from, or pictures of the CD if it is your own rip.</small>
+
+                {% for error in form.source.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endfor %}
             </div>
 
             <div class="form-group"><!-- file upload -->
@@ -22,6 +34,12 @@
                 {{ form.upload(class_='form-control') }}
 
                 <small class="form-text text-muted">File types accepted: all audio formats, .cue and .log files</small>
+
+                {% for error in form.upload.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endfor %}
 
             </div>
             {{ form.submit(class_='btn btn-primary') }}

@@ -85,14 +85,12 @@ def logout():
 @app.route("/submit", methods=['GET', 'POST'])
 def submit():
     form= SubmissionForm()
-    
     if form.validate_on_submit():
         flash(f'Submitted your files!', 'success')
         # Shows message, parses 'success' Bootstrap class
 
         return redirect(url_for('submit'))
     return render_template("submit.html", title='Submit', form=form)
-    
     
 if __name__ == "__main__":  # Lets you see the changes live 
     app.run(debug=True)
