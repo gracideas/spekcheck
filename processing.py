@@ -1,5 +1,5 @@
-import musicbrainzngs
 import configparser
+import musicbrainzngs
 
 config = configparser.ConfigParser()
 config.read('config.ini', encoding='utf-8')
@@ -13,7 +13,6 @@ id_input = "ef49c461-0948-4c57-9baa-8fbb15f0e05b"
 # Identify app to MusicBrainz
 musicbrainzngs.set_useragent('SpekCheck', version, contact=email)
 musicbrainzngs.set_rate_limit(limit_or_interval=1.0, new_requests=1)
-
 
 try:
     result = musicbrainzngs.get_release_by_id(id_input, includes=["artists", "discids","labels"])

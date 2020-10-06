@@ -1,15 +1,15 @@
 {% extends "template.html" %}
 {% block content %}
-    <form action="" form enctype="multipart/form-data" method=POST novalidate>
+    <form action="" form enctype="multipart/form-data" method=POST>
         {{ form.hidden_tag() }} <!-- Needs to be here for security -->
             <div class="form-group"><!-- MBID input -->
-                {{ form.musicbrainz_id.label }}
+                {{ form.musicbrainz_album_id.label }}
 
-                {{ form.musicbrainz_id(class_='form-control') }}
+                {{ form.musicbrainz_album_id(class_='form-control') }}
 
                 <small id="MusicBrainzIDHelp" class="form-text text-muted">Look up the MBID here.</small>
 
-                {% for error in form.musicbrainz_id.errors %}
+                {% for error in form.musicbrainz_album_id.errors %}
                 <div class="alert alert-danger" role="alert">
                     {{error}}
                 </div>
